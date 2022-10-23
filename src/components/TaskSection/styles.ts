@@ -1,26 +1,9 @@
 import styled from "styled-components";
 
-interface ITaskSectionProps {
-    className: string
-}
-
-function pickBodyBackground ({ className }: ITaskSectionProps): string {
-    switch (className) {
-        case 'todo':
-            return 'todo-fade'
-        case 'doing':
-            return 'doing-fade'
-        case 'done':
-            return 'done-fade'
-        default:
-            return 'extra-fade'
-    }
-}
-
 export const TaskSectionContainer = styled.section`
     flex: 1;
     min-height: var(--fit);
-    max-width: 29rem;
+    max-width: 33%;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -33,6 +16,22 @@ export const TaskSectionHeader = styled.header`
     width: 100%;
     text-align: center;
     color: #fff;
+
+    &.todo {
+        background-color: var(--background-todo);
+    }
+
+    &.doing {
+        background-color: var(--background-doing);
+    }
+
+    &.done {
+        background-color: var(--background-done);
+    }
+
+    &.extra {
+        background-color: var(--background-extra);
+    }
 `
 
 export const TaskSectionBody = styled.div`
@@ -45,4 +44,32 @@ export const TaskSectionBody = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+
+    &.todo {
+        background-color: var(--background-todo-fade);
+        .task {
+            background-color: var(--background-todo);
+        }
+    }
+
+    &.doing {
+        background-color: var(--background-doing-fade);
+        .task {
+            background-color: var(--background-doing);
+        }
+    }
+
+    &.done {
+        background-color: var(--background-done-fade);
+        .task {
+            background-color: var(--background-done);
+        }
+    }
+
+    &.extra {
+        background-color: var(--background-extra-fade);
+        .task {
+            background-color: var(--background-extra);
+        }
+    }
 `

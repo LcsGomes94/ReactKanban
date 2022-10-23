@@ -1,11 +1,15 @@
 import { AdminSectionContainer } from "./styles";
 
-export function AdminSection () {
+interface IAdminSectionProps {
+    children: React.ReactNode
+}
+
+export function AdminSection ({ children }: IAdminSectionProps) {
     return (
         <AdminSectionContainer>
             <h1>Kanban Board</h1>
             <div>
-                Tasks here!
+                {children}
             </div>
             <ul>
                 <li><button>+ Create New Task</button></li>

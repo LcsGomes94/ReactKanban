@@ -15,8 +15,13 @@ export const AdminSectionContainer = styled.section`
         text-align: center;
     }
 
-    div {
-        padding: 0.5rem 0;
+    & > div {
+        padding: 0.7rem 0.2rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
     }
 
     ul {
@@ -37,6 +42,10 @@ export const AdminSectionContainer = styled.section`
                 color: #0009;
             }
         }
+    }
+
+    .task {
+        background-color: var(--background-extra);
     }
 
 `

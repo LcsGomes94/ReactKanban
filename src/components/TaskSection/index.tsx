@@ -3,17 +3,17 @@ import { TaskSectionBody, TaskSectionContainer, TaskSectionHeader } from "./styl
 interface ITaskSectionProps {
     sectionLabel: string
     sectionType: string
+    children?: React.ReactNode
 }
 
-export function TaskSection ({ sectionLabel, sectionType }: ITaskSectionProps) {
+export function TaskSection ({ sectionLabel, sectionType, children }: ITaskSectionProps) {
     return (
         <TaskSectionContainer>
             <TaskSectionHeader className={sectionType}>
                 <h2>{sectionLabel}</h2>
             </TaskSectionHeader>
-            <TaskSectionBody className={sectionType + '-fade'}>
-                <h2>Task 1</h2>
-                <h2>Task 2</h2>
+            <TaskSectionBody className={sectionType}>
+                {children}
             </TaskSectionBody>
         </TaskSectionContainer>
     )

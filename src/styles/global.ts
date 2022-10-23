@@ -53,36 +53,4 @@ export const GlobalStyle = createGlobalStyle`
     input {
         font-family: 'Indie Flower';
     }
-
-    .todo {
-        background-color: var(--background-todo);
-    }
-
-    .doing {
-        background-color: var(--background-doing);
-    }
-
-    .done {
-        background-color: var(--background-done);
-    }
-
-    .extra {
-        background-color: var(--background-extra);
-    }
-
-    .todo-fade {
-        background-color: var(--background-todo-fade);
-    }
-
-    .doing-fade {
-        background-color: var(--background-doing-fade);
-    }
-
-    .done-fade {
-        background-color: var(--background-done-fade);
-    }
-
-    .extra-fade {
-        background-color: var(--background-extra-fade);
-    }
 `
