@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 export const TaskSectionContainer = styled.section`
-    flex: 1;
     min-height: var(--fit);
-    max-width: 33%;
+    flex-basis: 20rem;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -16,6 +15,7 @@ export const TaskSectionHeader = styled.header`
     width: 100%;
     text-align: center;
     color: #fff;
+    white-space: nowrap;
 
     &.todo {
         background-color: var(--background-todo);

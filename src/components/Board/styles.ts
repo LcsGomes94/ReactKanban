@@ -5,4 +5,5 @@ export const BoardContainer = styled.main`
     flex-wrap: wrap;
     gap: 2rem 1rem;
     padding: 2rem 1rem;
+    justify-content: center;
 `

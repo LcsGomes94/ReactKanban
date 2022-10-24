@@ -3,12 +3,11 @@ import styled from "styled-components";
 
 export const AdminSectionContainer = styled.section`
     min-height: var(--fit);
-    max-width: 29rem;
+    flex-basis: 20rem;
     display: flex;
     flex-flow: column;
     align-items: center;
     padding: 0.7rem;
-    flex: 1;
 
     h1 {
         font-size: 2rem;
@@ -34,12 +33,13 @@ export const AdminSectionContainer = styled.section`
 
         button {
             font-size: 1.2rem;
-            border: none;
-            border-radius: 0.3rem;
-            background-color: var(--background);
+            background-color: inherit;
+            border: solid 1px #d7d7d7;
+            border-radius: 0.5rem;
+            padding: 0.3rem 1rem;
 
             &:hover {
-                color: #0009;
+                border: solid 1px #0005
             }
         }
     }

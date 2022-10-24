@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { HandleOpenContext, HandleTitleContext, SetInputContext } from "../Modal/ModalContext";
 import { AdminSectionContainer } from "./styles";
 
 interface IAdminSectionProps {
@@ -5,6 +7,10 @@ interface IAdminSectionProps {
 }
 
 export function AdminSection ({ children }: IAdminSectionProps) {
+    const handleOpenModal = useContext(HandleOpenContext)
+    const setModalTitle = useContext(HandleTitleContext)
+    const setInputValue = useContext(SetInputContext)
+
     return (
         <AdminSectionContainer>
             <h1>Kanban Board</h1>
@@ -12,10 +18,17 @@ export function AdminSection ({ children }: IAdminSectionProps) {
                 {children}
             </div>
             <ul>
-                <li><button>+ Create New Task</button></li>
-                <li><button>+ Create New Section</button></li>
+                <li><button onClick={() => {
+                    setModalTitle('Create New Task')
+                    handleOpenModal()
+                    setInputValue('')
+                }}>+ Create New Task</button></li>
+                <li><button onClick={() => {
+                    setModalTitle('Create New Section')
+                    handleOpenModal()
+                    setInputValue('')
+                }}>+ Create New Section</button></li>
             </ul>
-
         </AdminSectionContainer>
     )
 }

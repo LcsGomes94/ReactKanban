@@ -14,6 +14,11 @@ export const TaskContainer = styled.div`
     justify-content: center;
     text-align: center;
     color: #FAFFFD;
+    cursor: grab;
+
+    &:active {
+        cursor: grabbing;
+    }
 
     @media (max-width: 1080px) {
         width: 100%;    
@@ -39,12 +44,21 @@ export const TaskContainer = styled.div`
         color: #fff;
         filter: invert(100%) sepia(0%) saturate(79%) hue-rotate(195deg) brightness(108%) contrast(101%);
 
-        &:hover {
+        &:hover:not(.pin) {
             opacity: 0.7;
         }
 
         &.deleteReady {
             filter: invert(18%) sepia(85%) saturate(6424%) hue-rotate(358deg) brightness(98%) contrast(118%);
+        }
+
+        &.pin {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            filter: none;
+            height: 14px;
+            filter: brightness(3)
         }
     }
 `
