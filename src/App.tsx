@@ -2,8 +2,8 @@ import { Board } from "./components/Board";
 import { GlobalStyle } from "./styles/global";
 import { useState } from "react";
 import { HandleOpenContext, HandleTitleContext, InputContext, SetInputContext } from './components/Modal/ModalContext'
-import { TasksContext, SetTasksContext } from './components/Task/TasksContext'
-import { SectionsContext, SetSectionsContext } from './components/TaskSection/SectionContext'
+import { TasksContext, SetTasksContext, TaskNameContext, SetTaskNameContext } from './components/Task/TasksContext'
+import { SectionNameContext, SectionsContext, SetSectionNameContext, SetSectionsContext } from './components/TaskSection/SectionContext'
 import { Modal } from "./components/Modal";
 
 interface ITask {
@@ -16,7 +16,11 @@ export function App() {
   const [ modalTitle, setModalTitle ] = useState('')
   const [ inputValue, setInputValue ] = useState('')
 
-  const [ taskList, setTaskList ] = useState<ITask[]>([])
+  const [ taskName, setTaskName ] = useState('')
+
+  const [ sectionName, setSectionName ] = useState('')
+
+  const [ taskList, setTaskList ] = useState<ITask[]>([{name: 'teste', parent: 'teste'}])
   const [ sectionList, setSectionList ] = useState<string[]>([])
   
   function handleOpenModal () {
@@ -36,9 +40,17 @@ export function App() {
     <SetTasksContext.Provider value={setTaskList}>
     <SectionsContext.Provider value={sectionList}>
     <SetSectionsContext.Provider value={setSectionList}>
-    <GlobalStyle />
+    <TaskNameContext.Provider value={taskName}>
+    <SetTaskNameContext.Provider value={setTaskName}>
+    <SectionNameContext.Provider value={sectionName}>
+    <SetSectionNameContext.Provider value={setSectionName}>
+      <GlobalStyle />
       <Modal isOpen={isMoldalOpen} onRequestClose={handleCloseModal} title={modalTitle}/>
       <Board />
+    </SetSectionNameContext.Provider>
+    </SectionNameContext.Provider>
+    </SetTaskNameContext.Provider>
+    </TaskNameContext.Provider>
     </SetSectionsContext.Provider>
     </SectionsContext.Provider>
     </SetTasksContext.Provider>

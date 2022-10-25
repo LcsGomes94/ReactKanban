@@ -20,13 +20,13 @@ export function AdminSection ({ children }: IAdminSectionProps) {
             <ul>
                 <li><button onClick={() => {
                     setModalTitle('Create New Task')
-                    handleOpenModal()
                     setInputValue('')
+                    handleOpenModal()
                 }}>+ Create New Task</button></li>
                 <li><button onClick={() => {
                     setModalTitle('Create New Section')
-                    handleOpenModal()
                     setInputValue('')
+                    handleOpenModal()
                 }}>+ Create New Section</button></li>
             </ul>
         </AdminSectionContainer>

@@ -50,6 +50,7 @@ export const TaskContainer = styled.div`
 
         &.deleteReady {
             filter: invert(18%) sepia(85%) saturate(6424%) hue-rotate(358deg) brightness(98%) contrast(118%);
+            opacity: 0.7;
         }
 
         &.pin {
