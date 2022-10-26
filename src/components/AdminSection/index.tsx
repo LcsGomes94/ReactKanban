@@ -1,9 +1,10 @@
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useContext } from "react";
 import { HandleOpenContext, HandleTitleContext, SetInputContext } from "../Modal/ModalContext";
 import { AdminSectionContainer } from "./styles";
 
 interface IAdminSectionProps {
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 
 export function AdminSection ({ children }: IAdminSectionProps) {
@@ -11,10 +12,12 @@ export function AdminSection ({ children }: IAdminSectionProps) {
     const setModalTitle = useContext(HandleTitleContext)
     const setInputValue = useContext(SetInputContext)
 
+    const [animate] = useAutoAnimate<HTMLDivElement>()
+
     return (
         <AdminSectionContainer>
             <h1>Kanban Board</h1>
-            <div>
+            <div ref={animate}>
                 {children}
             </div>
             <ul>

@@ -2,9 +2,11 @@ import { Board } from "./components/Board";
 import { GlobalStyle } from "./styles/global";
 import { useState } from "react";
 import { HandleOpenContext, HandleTitleContext, InputContext, SetInputContext } from './components/Modal/ModalContext'
-import { TasksContext, SetTasksContext, TaskNameContext, SetTaskNameContext } from './components/Task/TasksContext'
+import { TasksContext, SetTasksContext, TaskNameContext, SetTaskNameContext, TaskParentContext, SetTaskParentContext } from './components/Task/TasksContext'
 import { SectionNameContext, SectionsContext, SetSectionNameContext, SetSectionsContext } from './components/TaskSection/SectionContext'
 import { Modal } from "./components/Modal";
+import { SwapTaskModal } from "./components/SwapTaskModal";
+import { HandleOpenSwapModalContext } from "./components/SwapTaskModal/SwapModalContext";
 
 interface ITask {
   name: string
@@ -16,11 +18,14 @@ export function App() {
   const [ modalTitle, setModalTitle ] = useState('')
   const [ inputValue, setInputValue ] = useState('')
 
+  const [ isSwapMoldalOpen, setIsSwapModalOpen ] = useState(false)
+
   const [ taskName, setTaskName ] = useState('')
+  const [ taskParent, setTaskParent ] = useState('')
 
   const [ sectionName, setSectionName ] = useState('')
 
-  const [ taskList, setTaskList ] = useState<ITask[]>([{name: 'teste', parent: 'teste'}])
+  const [ taskList, setTaskList ] = useState<ITask[]>([])
   const [ sectionList, setSectionList ] = useState<string[]>([])
   
   function handleOpenModal () {
@@ -28,11 +33,20 @@ export function App() {
   }
     
   function handleCloseModal () {
-      setIsModalOpen(false)
+    setIsModalOpen(false)
+  }
+
+  function handleOpenSwapModal () {
+    setIsSwapModalOpen(true)
+  }
+  
+  function handleCloseSwapModal () {
+    setIsSwapModalOpen(false)
   }
     
   return (
     <HandleOpenContext.Provider value={handleOpenModal}>
+    <HandleOpenSwapModalContext.Provider value={handleOpenSwapModal}>
     <HandleTitleContext.Provider value={setModalTitle}>
     <InputContext.Provider value={inputValue}>
     <SetInputContext.Provider value={setInputValue}>
@@ -42,13 +56,19 @@ export function App() {
     <SetSectionsContext.Provider value={setSectionList}>
     <TaskNameContext.Provider value={taskName}>
     <SetTaskNameContext.Provider value={setTaskName}>
+    <TaskParentContext.Provider value={taskParent}>
+    <SetTaskParentContext.Provider value={setTaskParent}>
     <SectionNameContext.Provider value={sectionName}>
     <SetSectionNameContext.Provider value={setSectionName}>
       <GlobalStyle />
+
       <Modal isOpen={isMoldalOpen} onRequestClose={handleCloseModal} title={modalTitle}/>
+      <SwapTaskModal isOpen={isSwapMoldalOpen} onRequestClose={handleCloseSwapModal}/>
       <Board />
     </SetSectionNameContext.Provider>
     </SectionNameContext.Provider>
+    </SetTaskParentContext.Provider>
+    </TaskParentContext.Provider>
     </SetTaskNameContext.Provider>
     </TaskNameContext.Provider>
     </SetSectionsContext.Provider>
@@ -58,6 +78,7 @@ export function App() {
     </SetInputContext.Provider>
     </InputContext.Provider>
     </HandleTitleContext.Provider>
+    </HandleOpenSwapModalContext.Provider>
     </HandleOpenContext.Provider>
   );
 }

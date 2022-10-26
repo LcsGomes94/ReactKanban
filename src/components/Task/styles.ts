@@ -37,11 +37,16 @@ export const TaskContainer = styled.div`
         &:nth-child(1) {
             padding-right: 0.5rem;
         }
+
+        &.swap {
+            position: absolute;
+            bottom: 2px;
+            left: 7px;
+        }
     }
 
     img {
         height: 1.2rem;
-        color: #fff;
         filter: invert(100%) sepia(0%) saturate(79%) hue-rotate(195deg) brightness(108%) contrast(101%);
 
         &:hover:not(.pin) {
@@ -57,7 +62,6 @@ export const TaskContainer = styled.div`
             position: absolute;
             top: 5px;
             left: 5px;
-            filter: none;
             height: 14px;
             filter: brightness(3)
         }

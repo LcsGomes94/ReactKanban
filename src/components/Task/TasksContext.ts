@@ -10,3 +10,5 @@ export const SetTasksContext = createContext<Dispatch<SetStateAction<ITask[]>>>(
 
 export const TaskNameContext = createContext('')
 export const SetTaskNameContext = createContext<Dispatch<SetStateAction<string>>>(() => {});
+export const TaskParentContext = createContext('')
+export const SetTaskParentContext = createContext<Dispatch<SetStateAction<string>>>(() => {});

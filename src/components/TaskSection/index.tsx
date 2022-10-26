@@ -6,6 +6,7 @@ import { TaskSectionBody, TaskSectionContainer, TaskSectionHeader } from "./styl
 import editImg from '../../assets/edit.svg'
 import deleteImg from '../../assets/delete.svg'
 import { SetTasksContext, TasksContext } from "../Task/TasksContext";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 interface ITaskSectionProps {
     sectionLabel: string
@@ -53,13 +54,15 @@ export function TaskSection ({ sectionLabel, sectionType, children }: ITaskSecti
         }
     }
 
+    const [animate] = useAutoAnimate<HTMLDivElement>()
+
     return (
         <TaskSectionContainer>
             <TaskSectionHeader className={sectionType}>
                 <h2>{sectionLabel}</h2>
                 {renderButtons()}
             </TaskSectionHeader>
-            <TaskSectionBody className={sectionType}>
+            <TaskSectionBody className={sectionType} ref={animate}>
                 {children}
             </TaskSectionBody>
         </TaskSectionContainer>

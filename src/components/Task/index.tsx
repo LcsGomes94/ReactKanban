@@ -1,12 +1,17 @@
-import { TaskContainer } from "./styles";
 import editImg from "../../assets/edit.svg";
 import deleteImg from "../../assets/delete.svg";
 import pinImg from "../../assets/pin.svg";
+import swapImg from "../../assets/swap.svg";
+
+import { TaskContainer } from "./styles";
+
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+
 import { useContext, useState } from "react";
-import { SetTaskNameContext, SetTasksContext, TasksContext } from "./TasksContext";
+import { SetTaskNameContext, SetTaskParentContext, SetTasksContext, TasksContext } from "./TasksContext";
 import { HandleOpenContext, HandleTitleContext, SetInputContext } from "../Modal/ModalContext";
+import { HandleOpenSwapModalContext } from "../SwapTaskModal/SwapModalContext";
 
 interface ITask {
     name: string
@@ -14,11 +19,12 @@ interface ITask {
 }
 
 interface ITaskProps {
-    task: ITask;
+    task: ITask
+    id: string
 }
 
-export function Task ({ task }: ITaskProps) {
-    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: task.name })
+export function Task ({ task, id }: ITaskProps) {
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id })
     const style = {
         transform: CSS.Transform.toString(transform),
         transition,
@@ -35,6 +41,10 @@ export function Task ({ task }: ITaskProps) {
     const handleOpenModal = useContext(HandleOpenContext)
     const setModalTitle = useContext(HandleTitleContext)
     const setInputValue = useContext(SetInputContext)
+
+    const setTaskParent = useContext(SetTaskParentContext)
+
+    const handleOpenSwapModal = useContext(HandleOpenSwapModalContext)
 
     const [ deleteReady, setDeleteReady ] = useState(false)
 
@@ -58,6 +68,11 @@ export function Task ({ task }: ITaskProps) {
 
                 </div>
                 <img src={pinImg} alt="" className="pin" />
+                <button className="swap" onClick={() => {
+                    setTaskParent(task.parent)
+                    setTaskName(task.name)
+                    handleOpenSwapModal()
+                }}><img src={swapImg} alt="swap"/></button>
             </TaskContainer>
         </div>
     )
