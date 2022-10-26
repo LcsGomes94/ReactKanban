@@ -21,9 +21,7 @@ export function SwapTaskModal ({ isOpen, onRequestClose }:IModalProps) {
     const setTasksList = useContext(SetTasksContext)
 
     function handleSwap (dest: string) {
-        setTasksList(tasksList.map(task => (
-            task.name === taskName ? {name: taskName, parent: dest} : task
-        )))
+        setTasksList([...tasksList.filter(task => (task.name !== taskName)), {name: taskName, parent: dest}])
     }
 
     return (
