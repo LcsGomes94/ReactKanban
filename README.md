@@ -28,4 +28,4 @@
 
 <hr>
 
-<strong>Made by [LcsGomes](https://www.linkedin.com/in/lucas-gomes-16b293255)</strong>
+<strong>Made by [LcsGomes](www.linkedin.com/in/lcsdev94)</strong>
