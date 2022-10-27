@@ -24,7 +24,7 @@
 </ul>
 <br>
 <br>
-<p><strong>Try it yourself:</strong> soon... for now you can clone the git repository, npm install and npm start.
+<p><strong>Try it yourself:</strong> [React Kanban Board](https://react-kanban-mauve.vercel.app )
 
 <hr>
 
