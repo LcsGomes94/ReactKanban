@@ -24,7 +24,8 @@
 </ul>
 <br>
 <br>
-<p><strong>Try it yourself:</strong> [ReactKanban](https://www.react-kanban-mauve.vercel.app/)
+
+<strong>Try it yourself: [React Kanban](https://react-kanban-mauve.vercel.app)</strong>
 
 <hr>
 
